@@ -142,13 +142,15 @@ global.bruhdash = {
 
   // removes all given values from an array
   pull: function (arr, valOne, valTwo) {
-    let newArr = [];
     for(i = 0; i < arr.length; i++) {
-      if(arr[i] !== valOne && arr[i] !== valTwo) {
-        newArr.push(arr[i]);
+      if(arr[i] === valOne) {
+        arr.splice(arr.indexOf(arr[i]), 1);
+      } 
+      if(arr[i] === valTwo) {
+        arr.splice(arr.indexOf(arr[i]), 1);
       }
     }
-    return newArr;
+    return arr;
   },
 
   // removes elements of an array corresponding to the given indices
@@ -160,13 +162,25 @@ global.bruhdash = {
   },
 
   // creates an array excluding all the specified values
-  without: function() {
-
+  without: function(arr, valOne, valTwo) {
+    let newArr = [];
+    for(i = 0; i < arr.length; i++) {
+      if(arr[i] !== valOne && arr[i] !== valTwo) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
   },
 
   // returns an array with specified values excluded
-  difference: function() {
-
+  difference: function(arr, valArr) {
+    let newArr = [];
+    for(i = 0; i < arr.length; i++) {
+      if(valArr.indexOf(arr[i]) === -1) { //-1 means that it "never occurs in the array"
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
   },
 
   /*******************
