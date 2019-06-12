@@ -30,23 +30,44 @@ global.bruhdash = {
   },
 
   // returns an array with all elements except for the last element
-  initial: function () {
-
+  initial: function (arr) {
+    arr.pop();
+    return arr;
   },
   
   // returns an array with all falsey values removed
-  compact: function() {
-
+  compact: function(arr) {
+    let newArr = [];
+    return arr.filter(Boolean);
+    // Longer/Broken down way
+    // for(i = 0; i < arr.length; i++) {
+    //   if(arr[i] == false || arr[i] == null || arr[i] == 0 || arr[i] == "" || arr[i] == undefined || Number.isNaN(arr[i])) {
+    //     arr.splice(i, 1);
+    //     i--;
+    //   }
+    // }
+    // return arr;
   },
 
   // creates a slice of an array from the start index up to but not including the end index
-  slice: function () {
-
+  slice: function (arr, valOne, valTwo) {
+    return arr.slice(valOne, valTwo);
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
-
+  drop: function(arr, val){
+    if(val === undefined) {
+      arr.shift();
+    } else {
+      for(i = 0; i < val; i++) {
+        if(val === 0) {
+        return arr;
+        } else {
+        arr.shift();
+        }
+      }
+    }
+    return arr;
   },
 
   // returns a slice of array with n elements dropped from the end
