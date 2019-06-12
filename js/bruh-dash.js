@@ -130,7 +130,7 @@ global.bruhdash = {
       for(i = 0; i < arr.length; i++) {
         newArr.push(val);
       }
-    } else {
+    } else { // check out .fill() method later.
       arr.splice(start, rplc);
       for(i = 0; i < rplc; i++) {
         arr.splice(start, 0, val)
@@ -188,30 +188,72 @@ global.bruhdash = {
    *******************/ 
 
   // creates an array of grouped elements
-  zip: function () {
-
+  zip: function (arr1, arr2) {
+    let newArr = arr1.map(function(i, j) {
+      return [i, arr2[j]];
+    })
+    return newArr;
   },
 
   // creates an array of grouped elements in their pre-zip configuration
-  unzip: function () {
-
+  unzip: function  (arr) {
+    let newArr = [];
+    let group1 = [];
+    let group2 = [];
+    let final = [];
+    for(i = 0; i < arr.length; i++) {
+      for(j = 0; j < arr[i].length; j++) {
+        newArr.push(arr[i][j]);
+      }
+    }
+    for(i = 0; i < newArr.length; i++) {
+      if(newArr.indexOf(newArr[i]) % 2 === 0) {
+        group1.push(newArr[i]);
+      } else {
+        group2.push(newArr[i]);
+      }
+    }
+    final.push(group1, group2)
+    return final;
   },
 
   // creates an array of elements into groups of length of specified size
-  chunk: function(){
-
+  chunk: function(arr, val){
+    let newArr = [];
+    let emptyArr = [];
+    if(arr == "") {
+      return newArr;
+    }
+    if(val >= arr.length) {
+      emptyArr.push(arr);
+      return emptyArr;
+    } else {
+      
+    }
+    return newArr;
   },
 
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
-  forEach: function() {
-
+  forEach: function(arr) {
+    return arr
   },
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
-  map: function() {
-
+  map: function(para) {
+    if(typeof para === "object") {
+      let objArr = Object.values(para);
+      let times1 = objArr.map(function(i) {
+        return i * 2;
+      });
+      return times1;
+    } else {
+      let newArr1 = arr.map(function(i) {
+        return i * 2;
+      });
+      return newArr1;
+    };
   },
 
   /*************************
