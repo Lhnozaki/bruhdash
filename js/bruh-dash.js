@@ -221,16 +221,26 @@ global.bruhdash = {
   chunk: function(arr, val){
     let newArr = [];
     let emptyArr = [];
+    let chunk = [];
     if(arr == "") {
       return newArr;
-    }
+    };
+
     if(val >= arr.length) {
       emptyArr.push(arr);
       return emptyArr;
-    } else {
-      
+    };
+
+    if(val === 0) {
+      return newArr;
     }
-    return newArr;
+      
+    let index = 0;
+    while (index < arr.length) {
+      chunk.push(arr.slice(index, val + index));
+      index += val;
+    }
+    return chunk;
   },
 
   // iterates over elements of a collection and invokes iteratee for each element
