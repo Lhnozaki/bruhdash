@@ -141,13 +141,22 @@ global.bruhdash = {
   },
 
   // removes all given values from an array
-  pull: function () {
-
+  pull: function (arr, valOne, valTwo) {
+    let newArr = [];
+    for(i = 0; i < arr.length; i++) {
+      if(arr[i] !== valOne && arr[i] !== valTwo) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  pullAt: function (arr, ind) {
+    let newArr = [];  
+    newArr.push(arr[ind[0]]);
+    newArr.push(arr[ind[1]]);
+    return newArr;
   },
 
   // creates an array excluding all the specified values
