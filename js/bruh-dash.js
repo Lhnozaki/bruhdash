@@ -37,7 +37,7 @@ global.bruhdash = {
   
   // returns an array with all falsey values removed
   compact: function(arr) {
-    let newArr = [];
+    //let newArr = [];
     return arr.filter(Boolean);
     // Longer/Broken down way
     // for(i = 0; i < arr.length; i++) {
@@ -245,8 +245,10 @@ global.bruhdash = {
 
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
-  forEach: function(arr) {
-    return arr
+  forEach: function(collection, each) {
+    for(let key in collection) { // loop through both objects && arrays;
+      each(collection[key]);
+    }
   },
 
   // creates an array of values by running each element in collection thru the iteratee
@@ -272,14 +274,23 @@ global.bruhdash = {
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
-  filter: function() {
-
+  filter: function(collection, func) {
+    let newArr = [];
+    for(let keys in collection) {
+      if(func(collection[keys]) === true) {
+        newArr.push(collection[keys]);
+      }
+    }
+    return newArr;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
-  reduce: function() {
-    
+  reduce: function(collection, func) {
+    let sum = 0;
+    for(let keys in collection) {
+      return func(sum, collection[keys]);
+    }
   }
 };
