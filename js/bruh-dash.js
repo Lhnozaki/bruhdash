@@ -288,9 +288,15 @@ global.bruhdash = {
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
   reduce: function(collection, func) {
-    let sum = 0;
+    let total = 0;
     for(let keys in collection) {
-      return func(sum, collection[keys]);
+      func(total, collection[keys]);
+      total += collection[keys];
     }
+    return total;
   }
 };
+// total = 0
+// for (let i = 0; i<Array.length; i++) {
+//   total = total + i;
+// }
